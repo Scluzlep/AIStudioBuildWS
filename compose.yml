@@ -6,7 +6,11 @@ services:
     container_name: aistudio-websocket-app
     env_file:
       - .env
+    environment:
+      - HTTP_PROXY=http://192.168.3.101:7897
+      - HTTPS_PROXY=http://192.168.3.101:7897
+      - NO_PROXY=localhost,127.0.0.1
     volumes:
-      - ./cookies:/app/cookies:rw
-      - ./logs:/app/logs:rw
+      - ./cookies:/dockerdata/AppDATA/aistudio-websocket/cookies:rw
+      - ./logs:/dockerdata/AppDATA/aistudio-websocket/logs:rw
     restart: unless-stopped
